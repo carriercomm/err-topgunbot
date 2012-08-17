@@ -4,10 +4,7 @@
 """A bot which will respond to various TOP GUN character name commands and
 mentions and respond with a random line spoken by that character in the film.
 """
-from copy import copy
-from errbot.botplugin import BotPlugin
-from errbot.jabberbot import botcmd
-
+from errbot import BotPlugin, botcmd
 from topGun import TopGun
 
 CHARACTERS =['maverick', 'iceman', 'goose', 'jester', 'viper', 'charlie', ]
@@ -24,6 +21,8 @@ class TopGunBotBuilder(type):
         return super(TopGunBotBuilder, mcs).__new__(mcs, name, bases, newClassDict)
 
 class TopGunBot(BotPlugin):
+    min_err_version = '1.6.0'
+
     __metaclass__ = TopGunBotBuilder
 
     def __init__(self):
